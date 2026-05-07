@@ -1,0 +1,20 @@
+params:
+  - id: API_KEY
+    type: password
+    name: "API Key"
+    description: "Web 面板登录密钥。建议 16+ 位随机字符串。装好后用此值登录，所有 /api/* 请求都需要带 Bearer Token。"
+    optional: false
+
+  - id: MAIL_PROVIDER
+    type: string
+    name: "邮箱提供者"
+    description: "cloudmail（CloudMail）或 cf_temp_email（Cloudflare Temp Email）。装好后可在 Web UI 设置面板里继续填写邮箱凭据等细节，无需在此处配置。"
+    default_value: "cloudmail"
+    optional: true
+
+  - id: PLAYWRIGHT_PROXY_URL
+    type: string
+    name: "Playwright 代理 URL（可选）"
+    description: "Chromium 浏览器流量出口代理。VPS / 数据中心 IP 容易被 OpenAI 标记，住宅代理体验更好。示例：socks5://host.docker.internal:1080。Playwright 不支持带认证的 socks5。"
+    default_value: ""
+    optional: true

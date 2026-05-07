@@ -1,0 +1,60 @@
+source: https://github.com/cnitlrt/AutoTeam
+source_author: cnitlrt
+is_original: false
+keywords: chatgpt,team,codex,rotation,automation,playwright,fastapi
+support_pc: true
+support_mobile: false
+
+screenshots:
+  pc:
+    - lazycat/screenshots/01-dashboard.png
+    - lazycat/screenshots/02-settings.png
+    - lazycat/screenshots/03-pool.png
+  mobile: []
+
+description:
+  zh-CN: |
+    AutoTeam 是一个面向 ChatGPT Team 的账号自动轮转 / 认证同步工具。
+    自动注册 Team 账号、获取 Codex 认证、按额度轮转席位，并把认证同步到
+    CLIProxyAPI / Sub2API。
+
+    核心能力
+    - 自动注册 Team 账号 + 获取 Codex 认证
+    - 智能按额度轮转、补位、复用旧号
+    - 自动巡检 + 触发轮转
+    - 远端同步 CPA / Sub2API
+    - 支持 OAuth 手动导入流程
+
+    可选依赖（在 Web UI 里配置即可）
+    - CloudMail / Cloudflare Temp Email（邮箱服务）
+    - CPA / Sub2API（远端同步目标）
+    - Chromium 出口代理（建议住宅 IP）
+
+    免责声明：上游 README 注明使用本工具可能违反 OpenAI 服务条款。
+    使用者需自行承担账号封禁、IP 限制等后果。仅供学习研究。
+
+    上游项目: https://github.com/cnitlrt/AutoTeam
+    本仓库（懒猫包装）: https://github.com/microlazy-apps/lazy-AutoTeam
+  en: |
+    AutoTeam is a ChatGPT Team account rotation and Codex auth sync tool.
+    It auto-registers Team accounts, captures Codex auth, rotates seats by
+    quota, and synchronizes auth to CLIProxyAPI / Sub2API.
+
+    Capabilities
+    - Auto-register Team accounts + capture Codex auth
+    - Quota-driven seat rotation, backfill, and reuse of old accounts
+    - Background quota probes that trigger rotation
+    - Remote sync to CPA / Sub2API
+    - Manual OAuth import flow
+
+    Optional integrations (set up in the Web UI):
+    - CloudMail / Cloudflare Temp Email (mailbox)
+    - CPA / Sub2API (remote sync targets)
+    - Chromium egress proxy (residential IPs recommended)
+
+    Disclaimer: per upstream README, using this tool may violate OpenAI's
+    terms of service. Users assume all risk (account suspension, IP limits).
+    Educational / research use only.
+
+    Upstream project: https://github.com/cnitlrt/AutoTeam
+    This wrapper repo: https://github.com/microlazy-apps/lazy-AutoTeam

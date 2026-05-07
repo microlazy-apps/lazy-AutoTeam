@@ -1,0 +1,9 @@
+.DS_Store
+*.lpk
+lazycat/lzc-manifest.yml
+lazycat/package.yml
+.idea/
+.vscode/
+node_modules/
+__pycache__/
+*.pyc

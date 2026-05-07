@@ -1,0 +1,107 @@
+pkgout: ./
+icon: ./icon.png
+manifest: ./lzc-manifest.yml
+package: cloud.lazycat.app.autoteam
+version: ${VERSION}
+name: AutoTeam
+description: ChatGPT Team 账号自动轮转管理（含 Codex 额度监控、自动换号）
+author: cnitlrt
+license: MIT
+homepage: https://github.com/microlazy-apps/lazy-AutoTeam
+locales:
+  zh-CN:
+    name: AutoTeam
+    description: 自托管 AutoTeam —— ChatGPT Team 账号轮转 / Codex 额度监控 / 自动换号
+    usage: |
+      ## 关于 AutoTeam
+
+      AutoTeam 是一个为 ChatGPT Team 订阅设计的账号轮转 / 认证同步工具。
+
+      核心能力：
+
+      - 📧 自动注册 Team 账号并获取 Codex 认证
+      - 🔄 按额度自动轮转、补位、复用旧号
+      - 🔍 自动巡检：定时检查额度，触发轮转
+      - ☁️ 远端同步：把认证同步到 [CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI)
+        / [Sub2API](https://github.com/Wei-Shaw/sub2api)
+      - 🔐 OAuth 导入：手动接管 OAuth 流程导入账号
+
+      ## 装好后第一次使用
+
+      1. 浏览器访问 https://autoteam.{你的微服域名}
+      2. 用安装时填写的 **API Key** 登录 Web 面板
+      3. 在「设置」里继续填写：
+         - **邮箱服务**：CloudMail 或 Cloudflare Temp Email 的地址 / 凭据
+         - **远端同步**（可选）：CPA / Sub2API 的 URL / Key
+         - **代理**（可选）：Chromium 出口代理（VPS 容易被 OpenAI 标记）
+
+      所有运行时配置保存在 `/lzcapp/var/persist/.env`，重装 / 升级后保留。
+
+      ## 数据持久化
+
+      `/lzcapp/var/persist/` 目录下：
+
+      - `.env` —— 运行时配置（邮箱、远端同步、代理等）
+      - `accounts.json` —— 账号池
+      - `state.json` —— 调度状态
+      - `auths/` —— 各账号的 Codex 认证文件
+      - `screenshots/` —— Playwright 调试截图
+
+      ## 已知限制（来自上游）
+
+      - VPS / 数据中心 IP 容易被 OpenAI / Cloudflare 标记，建议配置住宅代理
+      - 同一时间只允许一个 Playwright 操作（串行）
+      - 邮箱验证码有效期短，网络延迟可能导致过期
+      - 目前仅支持从 CPA 反向拉取，不支持从 Sub2API 反向拉取
+
+      ## 免责声明
+
+      上游项目 README 注明：使用本工具可能违反 OpenAI 服务条款，
+      包括但不限于自动化操作、多账号管理。使用者需自行承担账号封禁、
+      IP 限制等后果。本仓库（lazycat 包装）仅做安装层封装，不改动上游
+      逻辑，作者不对任何因使用本工具造成的损失承担责任。仅供学习研究。
+  en:
+    name: AutoTeam
+    description: Self-hosted AutoTeam — ChatGPT Team account rotation & Codex auth sync
+    usage: |
+      ## About AutoTeam
+
+      AutoTeam rotates ChatGPT Team seats and synchronizes Codex auth to
+      downstream proxies (CLIProxyAPI / Sub2API).
+
+      Capabilities:
+
+      - Auto-register Team accounts and capture Codex auth
+      - Quota-driven seat rotation, backfill, and account reuse
+      - Periodic background quota checks
+      - Remote sync to CLIProxyAPI / Sub2API
+      - Manual OAuth import flow
+
+      ## First run
+
+      1. Open https://autoteam.{your-box-domain}
+      2. Log in with the **API Key** you set during install
+      3. Fill remaining settings in the Web UI Settings panel:
+         - Mailbox provider (CloudMail or Cloudflare Temp Email)
+         - Remote sync (optional): CPA / Sub2API URL + key
+         - Proxy (optional): Chromium egress proxy
+
+      All runtime config is persisted to `/lzcapp/var/persist/.env`.
+
+      ## Persistent storage
+
+      `/lzcapp/var/persist/`:
+
+      - `.env` — runtime config
+      - `accounts.json` — account pool
+      - `state.json` — scheduler state
+      - `auths/` — per-account Codex auth files
+      - `screenshots/` — Playwright debug shots
+
+      ## Disclaimer
+
+      Per upstream README: using this tool may violate OpenAI's terms of
+      service, including but not limited to automation and multi-account
+      management. The user assumes all risk (account suspension, IP limits,
+      etc.). This wrapper repo packages the upstream as-is for the lazycat
+      platform without modifying its behavior. Educational / research use only.

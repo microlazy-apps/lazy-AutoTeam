@@ -1,0 +1,38 @@
+application:
+  subdomain: autoteam
+  upstreams:
+    - location: /
+      backend: http://main:8787
+  public_path:
+    - /
+  health_check:
+    test_url: http://main:8787/api/setup/status
+    timeout: 10s
+    start_period: 60s
+
+services:
+  main:
+    image: ${LAZYCAT_IMAGE}
+    environment:
+      - TZ=Asia/Shanghai
+
+      # Web 面板 / API 鉴权（manifest 注入；上游 config.py 用
+      # os.environ.setdefault(...) 加载 .env，所以 manifest 优先级高于
+      # data/.env，确保 API_KEY 不会被 UI 改回）
+      - API_KEY={{.U.API_KEY}}
+
+      # 邮箱提供者初始默认值；装好后可在 Web UI 设置里改
+      - MAIL_PROVIDER={{.U.MAIL_PROVIDER}}
+
+      # Chromium 出口代理（可选；空值 = 不走代理）
+      - PLAYWRIGHT_PROXY_URL={{.U.PLAYWRIGHT_PROXY_URL}}
+      - PLAYWRIGHT_PROXY_BYPASS=localhost,127.0.0.1
+    binds:
+      # 持久化 .env / accounts.json / state.json / auths/ / screenshots/
+      - /lzcapp/var/persist:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8787/api/setup/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
