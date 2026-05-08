@@ -8,6 +8,11 @@ description: ChatGPT Team 账号自动轮转管理（含 Codex 额度监控、�
 author: cnitlrt
 license: MIT
 homepage: https://github.com/microlazy-apps/lazy-AutoTeam
+
+unsupported_platforms:
+  - ios
+  - android
+
 locales:
   zh-CN:
     name: AutoTeam
