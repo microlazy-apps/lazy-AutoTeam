@@ -4,6 +4,15 @@ Wrapper for [`cnitlrt/AutoTeam`](https://github.com/cnitlrt/AutoTeam) packaging
 the upstream FastAPI + Vue + Playwright/Chromium stack as a single-process
 LazyCat app. Follows the standard `lazycat-lpk-wrapper` pattern.
 
+## Lazycat appstore identifiers
+
+- **package id**: `cloud.lazycat.app.autoteam`
+- **app_id**: `5346` (recorded 2026-05-08)
+- **subdomain**: `autoteam` → `https://autoteam.<box-domain>`
+- **bootstrap workflow**: when re-running `bootstrap-app.yml` to
+  resubmit a fix, pass `app_id=5346` so the workflow skips
+  `/app/create` (which would 500 on duplicate package).
+
 ## Architecture
 
 **Single-process**, like `lazy-pixelle-video`:
